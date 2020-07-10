@@ -17,7 +17,7 @@
 // This is a command line utility which helps to run different examples of how dp library can be used.
 // Usage example:
 // bazel run examples_main -- --scenario=CountVisitsPerHour --input_file=data/day_data.csv --non_private_output_file=$(pwd)/out1.csv --private_output_file=$(pwd)/out2.csv
-package main
+package examples
 
 import (
 
@@ -79,4 +79,3 @@ func RunExample(scenario, inputFile, nonPrivateResultsOutputFile, privateResults
 
 	log.Infof("Successfully finished executing the example")
 }
-func main(){}
