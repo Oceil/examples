@@ -17,12 +17,10 @@
 // This is a command line utility which helps to run different examples of how dp library can be used.
 // Usage example:
 // bazel run examples_main -- --scenario=CountVisitsPerHour --input_file=data/day_data.csv --non_private_output_file=$(pwd)/out1.csv --private_output_file=$(pwd)/out2.csv
-package examples
+package utils
 
 import (
-
 	log "github.com/golang/glog"
-	"github.com/Oceil/examples/utils"
 )
 
 const (
@@ -58,21 +56,21 @@ func RunExample(scenario, inputFile, nonPrivateResultsOutputFile, privateResults
 	}
 
 	var err error
-	var sc utils.Scenario
+	var sc Scenario
 	switch id := scenario; id {
 	case countVisitsPerHourScenarioID:
-		sc = &utils.CountVisitsPerHourScenario{}
+		sc = &CountVisitsPerHourScenario{}
 	case countVisitsPerDayScenarioID:
-		sc = &utils.CountVisitsPerDayScenario{}
+		sc = &CountVisitsPerDayScenario{}
 	case sumRevenuePerDayScenarioID:
-		sc = &utils.SumRevenuePerDayScenario{}
+		sc = &SumRevenuePerDayScenario{}
 	case countVisitsPerCertainDuration:
-		sc = &utils.CountVisitsPerCertainDurationScenario{}
+		sc = &CountVisitsPerCertainDurationScenario{}
 	default:
 		log.Exitf("There is no scenario with id = %d", id)
 	}
 
-	err = utils.RunScenario(sc, inputFile, nonPrivateResultsOutputFile, privateResultsOutputFile)
+	err = RunScenario(sc, inputFile, nonPrivateResultsOutputFile, privateResultsOutputFile)
 	if err != nil {
 		log.Exitf("Couldn't execute example, err = %v", err)
 	}
