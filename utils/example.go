@@ -77,3 +77,6 @@ func RunExample(scenario, inputFile, nonPrivateResultsOutputFile, privateResults
 
 	log.Infof("Successfully finished executing the example")
 }
+func Test(){
+	RunExample("", "", "", "")
+}
